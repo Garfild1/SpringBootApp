@@ -1,0 +1,44 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div>
+    <form th:method="post" th:action="@{/users/update(id=${user.getId()})}" th:object="${user}">
+        <table border="0" cellpadding="5">
+            <tr>
+                <td>ID: </td>
+                <td><input type="text" disabled th:field="*{id}"></td>
+            </tr>
+            <tr>
+                <td><label for="name"> name: </label></td>
+                <td><input type="text" th:field="*{name}" id="firstName" min="2" max="45" required pattern="[a-zA-Z]+"></td>
+                <td>
+                    <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}">name Error</div>
+                </td>
+            </tr>
+            <tr>
+                <td><label for="lastName">lastName: </label></td>
+                <td><input type="text" th:field="*{lastName}" id="lastName" min="2" max="45" required pattern="[a-zA-Z]+"></td>
+                <td>
+                    <div th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">secondName Error</div>
+                </td>
+            </tr>
+            <tr>
+                <td><label for="email">email: </label></td>
+                <td><input type="text" th:field="*{email}" id="email" min="2" max="45" required pattern="[a-zA-Z]+"></td>
+                <td>
+                    <div th:if="${#fields.hasErrors('email')}" th:errors="*{email}">email Error</div>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2"><input type="submit" value="update"></td>
+            </tr>
+        </table>
+    </form>
+</div>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>New User</title>
+</head>
+<body>
+<div align="center">
+    <h2>New User</h2>
+    <form th:action="@{/users/new}" method="post" th:object="${user}">
+        <table border="0" cellpadding="5">
+            <tr>
+                <td>name:</td>
+                <td>
+                    <input type="text" th:field="*{name}" min="2" max="45" required pattern="[a-zA-Z]+"/>
+                </td>
+                <td>
+                    <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}">name Error</div>
+                </td>
+            </tr>
+            <br/>
+            <br/>
+            <tr>
+                <td>lastName:</td>
+                <td>
+                    <input type="text" th:field="*{lastName}" min="2" max="45" required pattern="[a-zA-Z]+"/>
+                </td>
+                <td>
+                    <div th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">lastName Error</div>
+                </td>
+            </tr>
+            <br/>
+            <br/>
+            <tr>
+                <td>Email: </td>
+                <td><input type="text" id="Email" name="Email" value="" pattern="[a-zA-Z]+"/></td>
+            </tr>
+            <tr>
+                <td colspan="2"><input type="submit" value="Save"></td>
+            </tr>
+        </table>
+    </form>
+</div>
+</body>
+</html>
